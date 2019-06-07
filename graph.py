@@ -17,7 +17,7 @@ def accidents_per_day(df):
     accidents.plot(kind='bar', title='Accidents by day')
     plt.xlabel('Day')
     plt.ylabel('Accidents')
-    days = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+    days = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
     plt.xticks(np.arange(7), days)
     plt.show()
 
@@ -33,11 +33,27 @@ def casualties_ratio(df):
     ratio.plot(kind='bar')
     plt.show()
 
+
 def accidents_by_wheather(df):
     """Groups accidents by wheater conditions and counts them."""
-    plt.figure(1, figsize=(7,7))
+    plt.figure(1, figsize=(7, 7))
     accidents = df['Weather_Conditions'].groupby(df['Weather_Conditions']).count()
     accidents.plot(kind="bar", title="Accidents caused by Wheather")
     plt.xlabel('Causes')
     plt.ylabel('Accidents')
+    plt.show()
+
+
+def accidents_by_day_and_hour(df, day=2):
+    """Graphs accidents grouped by hour on day received."""
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    accidents = df[df['Day_of_Week'] == day].groupby(
+        pd.Grouper(freq='1H', key='Time'))['Accident_Index']
+    accidents.count().plot(kind='bar', title=f'Accidents on {days[day-1]}')
+    plt.xlabel('Hour')
+    plt.ylabel('Accidents')
+    hours = []
+    for key in accidents.groups:
+        hours.append(key.strftime('%H:%M'))
+    plt.xticks(np.arange(24), tuple(hours))
     plt.show()
