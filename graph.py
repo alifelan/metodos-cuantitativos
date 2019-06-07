@@ -4,10 +4,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+def plot_graphs(df):
+    corr_heatmap(df)
+    accidents_per_day(df)
+    casualties_ratio(df)
+    accidents_by_wheather(df)
+    accidents_by_day_and_hour(df, day=6)
+
+
 def corr_heatmap(df):
     """ This creates a heatmap based in the correlation of each variable with the rest"""
     corr = df.corr()
-    sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns)
+    sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns,
+                vmin=-1.0, vmax=1.0).set_title('Correlation heatmap')
     plt.show()
 
 
@@ -30,7 +39,7 @@ def casualties_ratio(df):
     casualties = grouped_casualties.sum()
     crashes = grouped_casualties.count()
     ratio = casualties / crashes
-    ratio.plot(kind='bar')
+    ratio.plot(kind='bar', title='Mean accidents by pedestrian facilities')
     plt.show()
 
 
