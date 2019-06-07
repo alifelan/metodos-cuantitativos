@@ -32,3 +32,12 @@ def casualties_ratio(df):
     ratio = casualties / crashes
     ratio.plot(kind='bar')
     plt.show()
+
+def accidents_by_wheather(df):
+    """Groups accidents by wheater conditions and counts them."""
+    plt.figure(1, figsize=(7,7))
+    accidents = df['Weather_Conditions'].groupby(df['Weather_Conditions']).count()
+    accidents.plot(kind="bar", title="Accidents caused by Wheather")
+    plt.xlabel('Causes')
+    plt.ylabel('Accidents')
+    plt.show()
