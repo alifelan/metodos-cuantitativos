@@ -22,9 +22,13 @@ def normality_test(df: pd.DataFrame = pd.DataFrame()):
     normality.test_sh(df)
 
 
-if __name__ == '__main__':
+def main():
     df = normalize(filter(read()))
     print('Running normality tests...')
     normality_test(df)
     print('Running distribution tests...')
     distribution_test(df)
+
+
+if __name__ == '__main__':
+    main()
