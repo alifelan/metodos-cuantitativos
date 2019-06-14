@@ -1,4 +1,4 @@
-from data import read, filter_df
+from data import read, filter, normalize
 import pandas as pd
 import normality
 import distribution
@@ -6,9 +6,8 @@ import distribution
 
 def distribution_test(df: pd.DataFrame = pd.DataFrame()):
     if df.empty:
-        print('Reading data...')
-        df = filter_df(read())
-    # distribution.test_exp(df)
+        df = filter(read())
+    distribution.test_exp(df)
     distribution.test_gam(df)
     distribution.test_wei(df)
     distribution.test_logn(df)
@@ -17,16 +16,15 @@ def distribution_test(df: pd.DataFrame = pd.DataFrame()):
 
 def normality_test(df: pd.DataFrame = pd.DataFrame()):
     if df.empty:
-        print('Reading data...')
-        df = filter_df(read())
+        df = filter(read())
     normality.test_and(df)
     normality.test_ks(df)
     normality.test_sh(df)
 
 
 if __name__ == '__main__':
-    df = filter_df(read())
+    df = normalize(filter(read()))
     print('Running normality tests...')
-    # normality_test(df)
+    normality_test(df)
     print('Running distribution tests...')
     distribution_test(df)

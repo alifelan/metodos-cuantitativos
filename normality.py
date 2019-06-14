@@ -9,6 +9,7 @@ def test(df: pd.DataFrame):
         print(anderson_test(df[column]))
         print(kstest_test(df[column]))
         print(shapiro_test(df[column]))
+        input("Press enter to continue.")
 
 
 def test_and(df: pd.DataFrame):
