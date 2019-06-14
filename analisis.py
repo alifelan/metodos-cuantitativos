@@ -1,9 +1,10 @@
-import numpy as np 
+import numpy as np
 import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
 import seaborn as sb
-from data import * 
+from data import *
+
 
 def stats_location_easting(data):
     """ Analisys of the variable Location Easting OSGR """
@@ -18,7 +19,8 @@ def stats_location_easting(data):
     print(curtosis)
     plt.hist(data, bins='auto')
     plt.title("Histogram of Location Easting OSGR")
-    plt.show() 
+    plt.show()
+
 
 def stats_location_northing(data):
     """ Analisys of the variable Location Northing OSGR """
@@ -35,6 +37,7 @@ def stats_location_northing(data):
     plt.title("Histogram of Location Northing OSGR")
     plt.show()
 
+
 def date(data):
     """ Analisys of the variable Date """
     media = np.mean(data)
@@ -49,6 +52,7 @@ def date(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Date")
     plt.show()
+
 
 def day_week(data):
     """ Analisys of the variable Day Week """
@@ -65,6 +69,7 @@ def day_week(data):
     plt.title("Histogram of Day Week")
     plt.show()
 
+
 def time(data):
     """ Analisys of the variable Time """
     media = np.mean(data)
@@ -79,6 +84,7 @@ def time(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Time")
     plt.show()
+
 
 def speed_limit(data):
     """ Analisys of the variable Speed Limit"""
@@ -95,6 +101,7 @@ def speed_limit(data):
     plt.title("Histogram of Speed Limit")
     plt.show()
 
+
 def light_conditions(data):
     """ Analisys of the variable Light Conditions """
     media = np.mean(data)
@@ -109,6 +116,7 @@ def light_conditions(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Light Conditions")
     plt.show()
+
 
 def first_road_class(data):
     """ Analisys of the variable First Road Class """
@@ -125,6 +133,7 @@ def first_road_class(data):
     plt.title("Histogram of First Road Class")
     plt.show()
 
+
 def second_road_class(data):
     """ Analisys of the variable Second Road Class """
     media = np.mean(data)
@@ -139,6 +148,7 @@ def second_road_class(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Second Road Class")
     plt.show()
+
 
 def first_road_number(data):
     """ Analisys of the variable First Road Number """
@@ -155,6 +165,7 @@ def first_road_number(data):
     plt.title("Histogram of First Road Number ")
     plt.show()
 
+
 def second_road_number(data):
     """ Analisys of the variable Second Road Number """
     media = np.mean(data)
@@ -169,6 +180,7 @@ def second_road_number(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Second Road Number")
     plt.show()
+
 
 def weather(data):
     """ Analisys of the variable Weather """
@@ -185,6 +197,7 @@ def weather(data):
     plt.title("Histogram of Weather")
     plt.show()
 
+
 def area(data):
     """ Analisys of the variable Area """
     media = np.mean(data)
@@ -199,6 +212,7 @@ def area(data):
     plt.hist(data, bins='auto')
     plt.title("Histogram of Area")
     plt.show()
+
 
 def year(data):
     """ Analisys of the variable Year """
@@ -216,19 +230,23 @@ def year(data):
     plt.show()
 
 
-def init():
+def main():
     data = read()
     stats_location_easting(data['Location_Easting_OSGR'])
     stats_location_northing(data['Location_Northing_OSGR'])
-    #data(data[])
+    # data(data[])
     day_week(data['Day_of_Week'])
-    #time(data[])
+    # time(data[])
     speed_limit(data['Speed_limit'])
-    #ilight_conditions(data[])
+    # ilight_conditions(data[])
     first_road_class(data['1st_Road_Class'])
     second_road_class(data['2nd_Road_Class'])
     first_road_number(data['1st_Road_Number'])
     second_road_number(data['2nd_Road_Number'])
-    #weather(data[])
+    # weather(data[])
     area(data['Urban_or_Rural_Area'])
     year(data['Year'])
+
+
+if __name__ == '__main__':
+    main()
