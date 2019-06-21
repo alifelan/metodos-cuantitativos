@@ -4,11 +4,12 @@ from numpy.random import exponential, gamma, weibull, lognormal, pareto
 def test(df):
     """Run each distribution on each column."""
     for column in df:
-        exp(df[column])
-        gam(df[column])
-        wei(df[column])
-        logn(df[column])
-        pare(df[column])
+        print(exp(df[column]))
+        print(gam(df[column]))
+        print(wei(df[column]))
+        print(logn(df[column]))
+        print(pare(df[column]))
+        input("Press enter to continue.")
 
 
 def test_exp(df):

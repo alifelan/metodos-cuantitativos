@@ -9,6 +9,7 @@ def test(df: pd.DataFrame):
         print(anderson_test(df[column]))
         print(kstest_test(df[column]))
         print(shapiro_test(df[column]))
+        input("Press enter to continue.")
 
 
 def test_and(df: pd.DataFrame):
@@ -37,7 +38,7 @@ def test_sh(df: pd.DataFrame):
 
 def anderson_test(data: pd.Series):
     """Run Anderson-Darling test on data received"""
-    return anderson(data)
+    return anderson(data, dist='norm')
 
 
 def kstest_test(data: pd.Series):
