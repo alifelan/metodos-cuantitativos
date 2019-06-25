@@ -66,3 +66,11 @@ def accidents_by_day_and_hour(df, day=2):
         hours.append(key.strftime('%H:%M'))
     plt.xticks(np.arange(24), tuple(hours))
     plt.show()
+
+
+def plot_clusters(model):
+    unique, counts = np.unique(model.labels_, return_counts=True)
+    r = dict(zip(unique, counts))
+    plt.bar(range(len(r)), list(r.values()), align='center')
+    plt.xticks(range(len(r)), list(r.keys()))
+    plt.show()
