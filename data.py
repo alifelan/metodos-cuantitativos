@@ -10,8 +10,8 @@ def filter(df: pd.DataFrame = pd.DataFrame()):
     print('Filtering data...')
     df = df.dropna()
     df2 = pd.DataFrame()
-    df2['Location_Easting_OSGR'] = df['Location_Easting_OSGR']
-    df2['Location_Northing_OSGR'] = df['Location_Northing_OSGR']
+    df2['Longitude'] = df['Longitude']
+    df2['Latitude'] = df['Latitude']
     df2['Month'] = df['Date'].dt.strftime('%m').astype(int)
     df2['Day'] = df['Date'].dt.strftime('%d').astype(int)
     df2['Day_of_Week'] = df['Day_of_Week']
@@ -26,8 +26,8 @@ def filter_location(df: pd.DataFrame = pd.DataFrame()):
         df = read()
     df = df.dropna()
     df2 = pd.DataFrame()
-    df2['Location_Easting_OSGR'] = df['Location_Easting_OSGR']
-    df2['Location_Northing_OSGR'] = df['Location_Northing_OSGR']
+    df2['Longitude'] = df['Longitude']
+    df2['Latitude'] = df['Latitude']
     return df2
 
 
