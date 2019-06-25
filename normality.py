@@ -1,11 +1,12 @@
 from scipy.stats import anderson, kstest, shapiro
+from data import filter_numeric
 import pandas as pd
 
 
 def test(df: pd.DataFrame):
     """Test each column with the methods."""
     print('Testing normality...')
-    for column in df:
+    for column in filter_numeric(df):
         print(anderson_test(df[column]))
         print(kstest_test(df[column]))
         print(shapiro_test(df[column]))
@@ -15,7 +16,7 @@ def test(df: pd.DataFrame):
 def test_and(df: pd.DataFrame):
     """Test each column with anderson test."""
     print('Running Anderson-Darling test...')
-    for column in df:
+    for column in filter_numeric(df):
         print(anderson(df[column]))
         input("Press enter to continue.")
 
@@ -23,7 +24,7 @@ def test_and(df: pd.DataFrame):
 def test_ks(df: pd.DataFrame):
     """Test each column with ks test."""
     print('Running Kolmogorov-Smirnov test...')
-    for column in df:
+    for column in filter_numeric(df):
         print(kstest_test(df[column]))
         input("Press enter to continue.")
 
@@ -31,7 +32,7 @@ def test_ks(df: pd.DataFrame):
 def test_sh(df: pd.DataFrame):
     """Test each column with shapiro test."""
     print('Running Shapiro-Wilk test...')
-    for column in df:
+    for column in filter_numeric(df):
         print(shapiro_test(df[column]))
         input("Press enter to continue.")
 
