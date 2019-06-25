@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn import preprocessing
 
 
 def filter(df: pd.DataFrame = pd.DataFrame()):
@@ -42,18 +41,4 @@ def read(filename='result.zip'):
     df = pd.read_csv(filename, compression='zip', low_memory=False)
     df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
     df['Time'] = pd.to_datetime(df['Time'], format='%H:%M')
-    return df
-
-
-def normalize(df: pd.DataFrame = pd.DataFrame()):
-    """Normalizes DataFrame"""
-    if df.empty:
-        df = filter(read())
-    df2 = filter_numeric(df)
-    values = df2.values
-    scaler = preprocessing.MinMaxScaler()
-    scaled_values = scaler.fit_transform(values)
-    df2 = pd.DataFrame(scaled_values)
-    for key in df2:
-        df[key] = df2[key]
     return df
