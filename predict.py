@@ -2,7 +2,7 @@ from sklearn import preprocessing
 from sklearn.cluster import KMeans
 from sklearn.pipeline import Pipeline
 from joblib import dump, load
-from data import read, filter_location
+from data import read_location
 import pickle
 
 
@@ -20,6 +20,6 @@ def predict(data):
     pipeline = load('pipeline.joblib')
     print('Predicting...')
     cluster = pipeline.predict([data])[0]
-    df = read()
+    df = read_location()
     labels = pipeline.named_steps['KMeans'].labels_
     return df[labels == cluster]
