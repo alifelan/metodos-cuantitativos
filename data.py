@@ -22,7 +22,7 @@ def filter(df: pd.DataFrame = pd.DataFrame()):
     df2['2nd_Road_Number'] = df['2nd_Road_Number']
     df2['Weather_Conditions'] = df['Weather_Conditions']
     df2['Urban_or_Rural_Area'] = df['Urban_or_Rural_Area']
-    return df2
+    return df2.dropna()
 
 
 def filter_numeric(df: pd.DataFrame):
