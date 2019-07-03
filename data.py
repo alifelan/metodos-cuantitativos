@@ -43,7 +43,7 @@ def read_location():
     return df
 
 
-def read_csv(filename='result.zip'):
+def read_zip(filename='result.zip'):
     """Reads the file received in the parameter. File must be a zip."""
     print('Reading data...')
     df = pd.read_csv(filename, compression='zip', low_memory=False)
